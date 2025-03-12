@@ -90,7 +90,7 @@ export default function Home() {
 
         result.push(totalItem);
       } else {
-        const item = {
+        const item: any = {
           key: child.item,
           lineItem: child.item,
         };
