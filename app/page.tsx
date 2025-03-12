@@ -113,7 +113,10 @@ export default function Home() {
   }
 
   const initialTableData = populateTableDataRecursevily(seedData);
-  const tableData = [...initialTableData[0].children, initialTableData[1]];
+  const tableData = [
+    ...(initialTableData[0].children as []),
+    initialTableData[1],
+  ];
 
   const [selectedCell, setSelectedCell] = useState<SelectedCell>({
     record: null,
