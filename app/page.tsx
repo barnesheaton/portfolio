@@ -74,7 +74,7 @@ export default function Home() {
           amounts: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         });
 
-        const totalItem = {
+        let totalItem = {
           key: "total-" + child.item,
           lineItem: "Total " + child.item,
           amounts: totals,
