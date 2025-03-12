@@ -30,7 +30,7 @@ export default function Home() {
       key: month.toLowerCase(),
       onCell: (record: { [x: string]: any }) => {
         return {
-          onClick: (e: any) => {
+          onClick: () => {
             showDrawer();
             setSelectedCell({
               month: month,
@@ -51,7 +51,7 @@ export default function Home() {
   ];
 
   function populateTableDataRecursevily(childArray: any[]) {
-    let result: {
+    const result: {
       key: any;
       lineItem: any;
       children?: any[];
@@ -60,21 +60,21 @@ export default function Home() {
 
     childArray.forEach((child: { children?: any; item?: any }) => {
       if (Object.keys(child).includes("children")) {
-        let res = populateTableDataRecursevily(child.children);
+        const tempChildren = populateTableDataRecursevily(child.children);
         let totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-        res.forEach((child) => {
+        tempChildren.forEach((child) => {
           totals = sumTwoArrays(totals, child.amounts);
         });
 
         result.push({
           key: child.item,
           lineItem: child.item,
-          children: res,
+          children: tempChildren,
           amounts: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         });
 
-        let totalItem = {
+        const totalItem = {
           key: "total-" + child.item,
           lineItem: "Total " + child.item,
           amounts: totals,
@@ -90,7 +90,7 @@ export default function Home() {
 
         result.push(totalItem);
       } else {
-        let item = {
+        const item = {
           key: child.item,
           lineItem: child.item,
         };
@@ -113,10 +113,7 @@ export default function Home() {
   }
 
   const initialTableData = populateTableDataRecursevily(seedData);
-  const [tableData, setTableData] = useState([
-    ...initialTableData[0].children,
-    initialTableData[1],
-  ]);
+  const tableData = [...initialTableData[0].children, initialTableData[1]];
 
   const [selectedCell, setSelectedCell] = useState<SelectedCell>({
     record: null,

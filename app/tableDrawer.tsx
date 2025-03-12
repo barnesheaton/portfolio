@@ -1,4 +1,4 @@
-import { Button, Drawer, Input, Radio, Space } from "antd";
+import { Button, Drawer, Input, Radio } from "antd";
 import { Table } from "antd";
 import type { TableProps } from "antd";
 import React, { useState } from "react";
@@ -8,7 +8,7 @@ import { getFlattenedCategoryOptions } from "@/app/utils/helper";
 import { SearchOutlined } from "@ant-design/icons";
 
 export interface SelectedCell {
-  record: Object | any;
+  record: object | any;
   value: number;
   month: string;
 }
