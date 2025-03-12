@@ -18,13 +18,13 @@ export interface Props {
 }
 
 interface DataType {
-  key: string;
+  key: number;
   date: string;
-  type: number;
-  description: string;
-  debit: string;
-  credit: string;
-  total: string;
+  type?: string;
+  description?: string;
+  debit?: number;
+  credit?: number;
+  total?: number;
   category: string;
 }
 
@@ -103,7 +103,7 @@ export default function TableDrawer({
     },
   ];
 
-  const tableData = [
+  const tableData: DataType[] = [
     {
       key: 1,
       date: "4/05/23",

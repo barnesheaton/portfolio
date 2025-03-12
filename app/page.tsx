@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Table } from "antd";
 import { Button, Drawer, Space } from "antd";
+import type { TableProps } from "antd";
+
 import { DownOutlined, RightOutlined } from "@ant-design/icons";
 import { SelectedCell } from "./tableDrawer";
 
@@ -15,8 +17,28 @@ import {
 
 import TableDrawer from "./tableDrawer";
 
+interface DataType {
+  key: number;
+  lineItem: string;
+  total?: number;
+  children?: any;
+  amounts?: any;
+  jan?: number;
+  feb?: number;
+  mar?: number;
+  apr?: number;
+  may?: number;
+  jun?: number;
+  jul?: number;
+  aug?: number;
+  sep?: number;
+  oct?: number;
+  nov?: number;
+  dec?: number;
+}
+
 export default function Home() {
-  const tableCols = [
+  const tableCols: TableProps<DataType>["columns"] = [
     {
       title: "Account",
       dataIndex: "lineItem",
@@ -51,12 +73,14 @@ export default function Home() {
   ];
 
   function populateTableDataRecursevily(childArray: any[]) {
-    const result: {
-      key: any;
-      lineItem: any;
-      children?: any[];
-      amounts?: number[] | number[];
-    }[] = [];
+    const result: DataType[] = [];
+
+    // const result: {
+    //   key: any;
+    //   lineItem: any;
+    //   children?: any[];
+    //   amounts?: number[] | number[];
+    // }[] = [];
 
     childArray.forEach((child: { children?: any; item?: any }) => {
       if (Object.keys(child).includes("children")) {
@@ -113,8 +137,8 @@ export default function Home() {
   }
 
   const initialTableData = populateTableDataRecursevily(seedData);
-  const tableData = [
-    ...(initialTableData[0].children as []),
+  const tableData: DataType[] = [
+    ...(initialTableData[0].children as DataType[]),
     initialTableData[1],
   ];
 
