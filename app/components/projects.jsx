@@ -34,7 +34,7 @@ export default function Projects({}) {
           <div>
             <div className="text-sm text-gray-500 mb-2">_01</div>
             <Title level={3} className="text-5xl font-bold text-gray-700 mb-4">
-              EcoTracker
+              YogiHari.com
             </Title>
             <div className="flex flex-wrap gap-2 mb-4">
               <Tag color="green">React</Tag>
