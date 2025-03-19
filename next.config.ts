@@ -2,6 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "namcjg6m8ca5vafn.public.blob.vercel-storage.com",
+      },
+    ],
+  },
   eslint: {
     ignoreDuringBuilds: true,
     // rules: {

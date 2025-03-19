@@ -1,23 +1,57 @@
 import { useState, useEffect } from "react";
 
-import Image from "next/image";
-import Link from "next/link";
 import { Button, Typography, Tag, Avatar } from "antd";
 import {
   GithubOutlined,
   LinkedinOutlined,
   MailOutlined,
-  MenuOutlined,
-  ArrowRightOutlined,
   EnvironmentOutlined,
-  CodeOutlined,
-  AppstoreOutlined,
-  ClockCircleOutlined,
 } from "@ant-design/icons";
 
 const { Title, Text, Paragraph } = Typography;
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const [isSending, setIsSending] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    setIsSending(true);
+
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_whwuofh",
+        "template_b0bzpec",
+        formData,
+        "XK-vSNjhYnx6-7CbF"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" }); // Clear the form
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Failed to send message, please try again later.");
+        }
+      )
+      .finally(() => {
+        setIsSending(false);
+      });
+  };
+
   return (
     <section id="contact" className="py-16">
       <div className="bg-white rounded-lg shadow-md p-8">
@@ -38,7 +72,9 @@ export default function Contact() {
               />
               <div>
                 <Text className="text-gray-500 block">Email</Text>
-                <Text className="text-lg font-medium">hello@naturedev.com</Text>
+                <Text className="text-lg font-medium">
+                  barnesheaton@gmail.com
+                </Text>
               </div>
             </div>
 
@@ -50,7 +86,7 @@ export default function Contact() {
               />
               <div>
                 <Text className="text-gray-500 block">Location</Text>
-                <Text className="text-lg font-medium">Portland, Oregon</Text>
+                <Text className="text-lg font-medium">Miami, Florida</Text>
               </div>
             </div>
 
@@ -92,6 +128,10 @@ export default function Contact() {
             <div>
               <label className="block text-gray-700 mb-2">Name</label>
               <input
+                disabled={isSending}
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 type="text"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 placeholder="Your name"
@@ -100,6 +140,10 @@ export default function Contact() {
             <div>
               <label className="block text-gray-700 mb-2">Email</label>
               <input
+                disabled={isSending}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 type="email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 placeholder="Your email"
@@ -108,12 +152,18 @@ export default function Contact() {
             <div>
               <label className="block text-gray-700 mb-2">Message</label>
               <textarea
+                disabled={isSending}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 rows="4"
                 placeholder="Your message"
               ></textarea>
             </div>
             <Button
+              loading={isSending}
+              onClick={handleSubmit}
               type="primary"
               size="large"
               block

@@ -22,6 +22,7 @@ import {
   NodejsOriginalWordmark,
   MongodbOriginal,
   PostgresqlOriginal,
+  WebflowOriginal,
 } from "devicons-react";
 
 export default function Stack() {
@@ -73,6 +74,10 @@ export default function Stack() {
               {
                 name: "TypeScript",
                 icon: <TypescriptOriginal size={40} />,
+              },
+              {
+                name: "WebFlow",
+                icon: <WebflowOriginal size={40} />,
               },
               { name: "GSAP Animations", icon: <></> },
             ].map((tech, index) => (

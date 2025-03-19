@@ -1,27 +1,24 @@
-import { useState, useEffect } from "react";
-
 import Image from "next/image";
-import Link from "next/link";
 import { Button, Typography, Tag, Avatar } from "antd";
-import {
-  GithubOutlined,
-  LinkedinOutlined,
-  MailOutlined,
-  MenuOutlined,
-  ArrowRightOutlined,
-  EnvironmentOutlined,
-  CodeOutlined,
-  AppstoreOutlined,
-  ClockCircleOutlined,
-} from "@ant-design/icons";
-
 const { Title, Text, Paragraph } = Typography;
 
+import { saveAs } from "file-saver";
+
 export default function Hero() {
+  const heroImgSrc =
+    "https://namcjg6m8ca5vafn.public.blob.vercel-storage.com/257_m-FPIX-3-00987474-DIGITAL_HIGHRES-3614_120114-426222-oisq9nMdaQc7NyAyoqxvwLjFgNT4xZ.JPG";
+
+  const saveFile = () => {
+    saveAs(
+      "https://namcjg6m8ca5vafn.public.blob.vercel-storage.com/Adam%20Heaton%20-%20Software%20Engineer%202025%20Resume-2rN1tHPReuU7cP2b1JCwyM45cxMQHn.pdf",
+      "Adam Heaton - Software Engineer 2025 Resume.pdf"
+    );
+  };
+
   return (
     <section id="about" className="py-16 md:py-24">
       <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
+        <div className="space-y-2">
           <div className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
             Software Engineer
           </div>
@@ -68,38 +65,40 @@ export default function Hero() {
                 paddingRight: "24px",
                 fontSize: "16px",
               }}
+              onClick={(e) => {
+                saveFile();
+              }}
             >
               Download Resume
             </Button>
+          </div>
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 mt-16 max-w-3xl">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-green-600">6+</div>
+              <div className="text-gray-600">Years of Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-green-600">12+</div>
+              <div className="text-gray-600">Completed Projects</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-green-600">10K+</div>
+              <div className="text-gray-600">Hours Worked</div>
+            </div>
           </div>
         </div>
         <div className="flex justify-center md:justify-end">
           <div className="relative">
             <div className="absolute -z-10 w-72 h-72 rounded-full bg-green-200 -top-6 -right-6"></div>
             <Image
-              src="/placeholder.svg?height=400&width=400"
+              src={heroImgSrc}
               alt="Developer"
               width={400}
               height={400}
               className="rounded-lg shadow-lg"
             />
           </div>
-        </div>
-      </div>
-
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-4 mt-16 max-w-3xl">
-        <div className="text-center">
-          <div className="text-4xl font-bold text-green-600">6+</div>
-          <div className="text-gray-600">Years of Experience</div>
-        </div>
-        <div className="text-center">
-          <div className="text-4xl font-bold text-green-600">12+</div>
-          <div className="text-gray-600">Completed Projects</div>
-        </div>
-        <div className="text-center">
-          <div className="text-4xl font-bold text-green-600">8K+</div>
-          <div className="text-gray-600">Hours Worked</div>
         </div>
       </div>
     </section>
