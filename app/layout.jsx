@@ -5,8 +5,8 @@ import { ConfigProvider } from "antd";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "NatureDev - Software Engineering Portfolio",
-  description: "A software engineering portfolio with a nature-inspired theme",
+  title: "Adam Heaton - Software Engineering Portfolio",
+  description: "A software engineering portfolio",
 };
 
 export default function RootLayout({ children }) {

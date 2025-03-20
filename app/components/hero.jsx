@@ -16,7 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="about" className="py-16 md:py-24">
+    <section id="about" className="py-16 md:pt-4">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-2">
           <div className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
@@ -38,10 +38,17 @@ export default function Hero() {
           <Paragraph className="text-lg text-gray-600">
             Hi! I'm <span className="font-bold">Adam</span>. A creative Frontend
             Developer with a passion for building high-performance, scalable,
-            and responsive web solutions.
+            and responsive User Interfaces.
+          </Paragraph>
+          <Paragraph className="text-lg text-gray-600">
+            With years of experience in small startups, large companies, and
+            companies of my own, I've learned to work hard, grow fast, and
+            communicate well with others in any environment. I'm ready to tackle
+            some problems, finish some big projects, and have fun along the way.
           </Paragraph>
           <div className="flex flex-wrap gap-4">
             <Button
+              href="#contact"
               type="primary"
               size="large"
               style={{

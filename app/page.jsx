@@ -16,8 +16,6 @@ import {
   ClockCircleOutlined,
 } from "@ant-design/icons";
 
-const { Title, Text, Paragraph } = Typography;
-
 import Projects from "@/app/components/projects";
 import Header from "@/app/components/header";
 import Hero from "@/app/components/hero";
@@ -64,7 +62,7 @@ export default function Home() {
               <div className="text-white text-2xl">
                 <EnvironmentOutlined />
               </div>
-              <span className="font-bold text-xl">ABHDev</span>
+              <span className="font-bold text-xl">Adam Heaton</span>
             </div>
 
             <div className="text-center md:text-right">

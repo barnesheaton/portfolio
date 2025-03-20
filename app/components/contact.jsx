@@ -92,6 +92,8 @@ export default function Contact() {
 
             <div className="flex gap-4 mt-8">
               <Button
+                href="https://github.com/barnesheaton"
+                target="_blank"
                 type="primary"
                 shape="circle"
                 icon={<GithubOutlined />}
@@ -102,6 +104,8 @@ export default function Contact() {
                 }}
               />
               <Button
+                href="https://www.linkedin.com/in/barnesheaton/"
+                target="_blank"
                 type="primary"
                 shape="circle"
                 icon={<LinkedinOutlined />}
@@ -112,6 +116,7 @@ export default function Contact() {
                 }}
               />
               <Button
+                href="mailto:barnesheaton@gmail.com"
                 type="primary"
                 shape="circle"
                 icon={<MailOutlined />}

@@ -45,7 +45,7 @@ export default function Header() {
           <div className="text-green-600 text-2xl">
             <EnvironmentOutlined />
           </div>
-          <span className="font-bold text-xl text-green-800">ABHDev</span>
+          <span className="font-bold text-xl text-green-800">Adam Heaton</span>
         </div>
 
         {isMobile ? (
@@ -85,6 +85,7 @@ export default function Header() {
               Contact
             </Link>
             <Button
+              href="#contact"
               type="primary"
               size="large"
               style={{
