@@ -36,6 +36,9 @@ export default function Projects({}) {
       title: "Quick Tag Kiosk",
       description:
         "Developed a nationwide Quick Tag Kiosk landing screen using Vue.js, GSAP, and CSS. Optimized animations using GSAP to ensure smooth performance on the kiosk hardware, minimizing CPU usage and enhancing responsiveness for a seamless user experience",
+      video:
+        "https://namcjg6m8ca5vafn.public.blob.vercel-storage.com/quick-tag-demo-iRQrKnEKUH7LfrNS3mSShUVBchhiCe.mov",
+      height: 300,
       tags: ["Vue.JS", "GSAP", "Javascript", "HTML", "CSS"],
     },
     {
@@ -125,6 +128,7 @@ export default function Projects({}) {
               <div className="bg-white p-4 rounded-lg shadow-md">
                 {project.video && (
                   <video
+                    style={project.height ? { height: project.height } : {}}
                     controls
                     loop
                     autoPlay
